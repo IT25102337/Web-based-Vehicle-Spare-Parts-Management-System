@@ -1,0 +1,30 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.3)
+
+2026-10-02T13:38:28.762+05:30  INFO 6264 --- [SparePartSystem] [           main] c.s.SparePartSystemApplication           : Starting SparePartSystemApplication v0.0.1-SNAPSHOT using Java 25.0.1 with PID 6264 (C:\Users\User\Desktop\SparePartSystem\target\SparePartSystem-0.0.1-SNAPSHOT.jar started by User in C:\Users\User\Desktop\SparePartSystem)
+2026-10-02T13:38:28.764+05:30  INFO 6264 --- [SparePartSystem] [           main] c.s.SparePartSystemApplication           : No active profile set, falling back to 1 default profile: "default"
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.apache.tomcat.jni.Library in an unnamed module (jar:nested:/C:/Users/User/Desktop/SparePartSystem/target/SparePartSystem-0.0.1-SNAPSHOT.jar/!BOOT-INF/lib/tomcat-embed-core-10.1.19.jar!/)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+2026-10-02T13:38:30.288+05:30  INFO 6264 --- [SparePartSystem] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-10-02T13:38:30.303+05:30  INFO 6264 --- [SparePartSystem] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-02T13:38:30.303+05:30  INFO 6264 --- [SparePartSystem] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-10-02T13:38:31.141+05:30  INFO 6264 --- [SparePartSystem] [           main] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2026-10-02T13:38:31.379+05:30  INFO 6264 --- [SparePartSystem] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-10-02T13:38:31.379+05:30  INFO 6264 --- [SparePartSystem] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2513 ms
+2026-10-02T13:38:31.663+05:30  INFO 6264 --- [SparePartSystem] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-02T13:38:32.408+05:30  INFO 6264 --- [SparePartSystem] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection ConnectionID:1 ClientConnectionId: 1edd6741-7788-4fce-8c97-62e8e0049638
+2026-10-02T13:38:32.410+05:30  INFO 6264 --- [SparePartSystem] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-02T13:38:33.243+05:30  INFO 6264 --- [SparePartSystem] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2026-10-02T13:38:33.274+05:30  INFO 6264 --- [SparePartSystem] [           main] c.s.SparePartSystemApplication           : Started SparePartSystemApplication in 5.148 seconds (process running for 5.82)
+2026-10-02T13:38:46.848+05:30  INFO 6264 --- [SparePartSystem] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-02T13:38:46.849+05:30  INFO 6264 --- [SparePartSystem] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-02T13:38:46.851+05:30  INFO 6264 --- [SparePartSystem] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
