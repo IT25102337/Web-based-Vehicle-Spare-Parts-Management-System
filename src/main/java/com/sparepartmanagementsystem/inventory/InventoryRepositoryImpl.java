@@ -168,7 +168,7 @@ public class InventoryRepositoryImpl implements InventoryRepository {
     @Override
     public int fulfillPendingRestockRequest(String partId) {
         try {
-            return jdbcTemplate.update("UPDATE restock_requests SET status = 'FULFILLED' WHERE part_id = ? AND status = 'PENDING'", partId.trim());
+            return jdbcTemplate.update("UPDATE restock_requests SET status = 'FULFILLED' WHERE part_id = ? AND status IN ('PENDING', 'ORDERED_FROM_SUPPLIER')", partId.trim());
         } catch (Exception e) {
             return 0;
         }

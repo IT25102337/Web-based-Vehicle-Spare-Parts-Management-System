@@ -138,8 +138,11 @@ public class SparePartSystemApplication {
 						"requested_quantity INT, " +
 						"request_message VARCHAR(255), " +
 						"request_date VARCHAR(50), " +
-						"status VARCHAR(20)" +
+						"status VARCHAR(50)" +
 						"); " +
+						"END " +
+						"ELSE BEGIN " +
+						"ALTER TABLE restock_requests ALTER COLUMN status VARCHAR(50); " +
 						"END";
 				jdbcTemplate.execute(createRequestTableSql);
 			} catch (Exception ex) {
@@ -153,7 +156,7 @@ public class SparePartSystemApplication {
 							"requested_quantity INT, " +
 							"request_message VARCHAR(255), " +
 							"request_date VARCHAR(50), " +
-							"status VARCHAR(20)" +
+							"status VARCHAR(50)" +
 							");");
 				} catch (Exception ignored) {}
 			}
