@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Executive Audit &amp; Reports | AutoParts Depot</title>
+    <title>Supply Procurement &amp; Orders | AutoParts Depot</title>
 
     <script>
         (function(){
@@ -24,46 +24,50 @@
 
     <style>
         :root {
-            --bg: #f8fafc;
+            --bg: #f5f4ef;
             --card: #ffffff;
-            --card-subtle: #f4f4f5;
-            --border: #e4e4e7;
-            --border-hover: #d4d4d8;
-            --txt: #09090b;
-            --txt2: #52525b;
-            --txt-muted: #71717a;
-            --brand-red: #cc1d24;
-            --brand-red-hover: #b0151b;
-            --brand-dark: #09090b;
-            --pill-bg: #f4f4f5;
+            --card-subtle: #eeece2;
+            --border: #dfdbce;
+            --border-hover: #c8c2b0;
+            --txt: #1c1917;
+            --txt2: #57534e;
+            --txt-muted: #78716c;
+            --brand-red: #d97706;
+            --brand-red-hover: #b45309;
+            --brand-dark: #1c1917;
+            --pill-bg: #eeece2;
             --sidebar-bg: #ffffff;
-            --table-head: #fafafa;
-            --table-hover: #f8fafc;
-            --radius-lg: 20px;
-            --radius-md: 14px;
-            --radius-sm: 8px;
-            --shadow-subtle: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px -4px rgba(0,0,0,0.04);
-            --shadow-modal: 0 20px 40px -10px rgba(0,0,0,0.18);
+            --table-head: #faf9f5;
+            --table-hover: #f5f3ec;
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --radius-sm: 6px;
+            --shadow-subtle: 0 1px 3px rgba(0,0,0,0.06), 0 8px 24px -4px rgba(0,0,0,0.06);
+            --shadow-modal: 0 20px 40px -10px rgba(0,0,0,0.2);
+            --amber-glow: rgba(217, 119, 6, 0.25);
+            --sku-txt: #b45309;
         }
 
         [data-theme="dark"] {
-            --bg: #09090b;
-            --card: #141416;
-            --card-subtle: #1c1c1f;
-            --border: #27272a;
-            --border-hover: #3f3f46;
-            --txt: #f4f4f5;
-            --txt2: #a1a1aa;
-            --txt-muted: #71717a;
-            --brand-red: #e11d48;
-            --brand-red-hover: #f43f5e;
-            --brand-dark: #ffffff;
-            --pill-bg: #1f1f23;
-            --sidebar-bg: #141416;
-            --table-head: #18181b;
-            --table-hover: #1b1b1f;
-            --shadow-subtle: 0 1px 3px rgba(0,0,0,0.4), 0 8px 24px -4px rgba(0,0,0,0.35);
-            --shadow-modal: 0 20px 40px -10px rgba(0,0,0,0.7);
+            --bg: #14171d;
+            --card: #1c2028;
+            --card-subtle: #242934;
+            --border: #2e3544;
+            --border-hover: #454f64;
+            --txt: #f1f5f9;
+            --txt2: #94a3b8;
+            --txt-muted: #64748b;
+            --brand-red: #f59e0b;
+            --brand-red-hover: #d97706;
+            --brand-dark: #f8fafc;
+            --pill-bg: #242934;
+            --sidebar-bg: #101318;
+            --table-head: #181c24;
+            --table-hover: #222732;
+            --shadow-subtle: 0 1px 3px rgba(0,0,0,0.5), 0 8px 24px -4px rgba(0,0,0,0.4);
+            --shadow-modal: 0 20px 40px -10px rgba(0,0,0,0.8);
+            --amber-glow: rgba(245, 158, 11, 0.22);
+            --sku-txt: #fbbf24;
         }
 
         * { box-sizing: border-box; }
@@ -145,12 +149,13 @@
             color: var(--txt);
         }
         .sidebar-icon-link.active {
-            background-color: var(--brand-dark);
-            color: #ffffff;
+            background-color: var(--brand-red);
+            color: #090a0d !important;
+            box-shadow: 0 0 16px var(--amber-glow);
         }
         [data-theme="dark"] .sidebar-icon-link.active {
-            background-color: #ffffff;
-            color: #09090b;
+            background-color: var(--brand-red);
+            color: #090a0d !important;
         }
 
         .badge-dot {
@@ -189,7 +194,7 @@
         }
         .theme-toggle-sidebar:hover, .logout-icon-link:hover {
             color: var(--txt);
-            border-color: var(--border-hover);
+            border-color: var(--brand-red);
             background: var(--card-subtle);
         }
 
@@ -220,16 +225,17 @@
         }
         .topbar-sub {
             font-size: 0.82rem;
-            color: var(--txt-muted);
+            color: var(--brand-red);
             margin: 0;
-            font-weight: 500;
+            font-weight: 600;
+            letter-spacing: 0.05em;
         }
 
         /* BUTTONS */
         .btn-pill-dark {
-            background: var(--brand-dark);
-            color: #ffffff !important;
-            border: 1px solid var(--brand-dark);
+            background: var(--card-subtle);
+            color: var(--txt) !important;
+            border: 1px solid var(--border);
             border-radius: 9999px;
             padding: 0.55rem 1.35rem;
             font-size: 0.82rem;
@@ -243,13 +249,9 @@
             cursor: pointer;
             transition: all 0.2s ease;
         }
-        [data-theme="dark"] .btn-pill-dark {
-            background: #ffffff;
-            color: #09090b !important;
-            border-color: #ffffff;
-        }
         .btn-pill-dark:hover {
-            opacity: 0.9;
+            border-color: var(--brand-red);
+            color: var(--brand-red) !important;
             transform: translateY(-1px);
         }
 
@@ -320,23 +322,25 @@
 
         .btn-pill-red {
             background: var(--brand-red);
-            color: #ffffff !important;
+            color: #090a0d !important;
             border: 1px solid var(--brand-red);
             border-radius: 9999px;
             padding: 0.45rem 1.15rem;
             font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 0.02em;
+            font-weight: 800;
+            letter-spacing: 0.03em;
             text-transform: uppercase;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 0.45rem;
             cursor: pointer;
+            box-shadow: 0 4px 14px var(--amber-glow);
             transition: all 0.2s ease;
         }
         .btn-pill-red:hover {
             background: var(--brand-red-hover);
+            border-color: var(--brand-red-hover);
             transform: translateY(-1px);
         }
 
@@ -360,7 +364,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center 40%;
+            object-position: center 45%;
             opacity: 0.65;
             transition: transform 0.5s ease;
         }
@@ -422,44 +426,7 @@
             font-weight: 400;
         }
 
-        /* BENTO CARDS */
-        .section-headline-box {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 1.5rem;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-        .section-title-huge {
-            font-size: 1.65rem;
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            text-transform: uppercase;
-            line-height: 1.1;
-            margin: 0;
-            color: var(--txt);
-        }
-        .section-sub-clean {
-            font-size: 0.88rem;
-            color: var(--txt-muted);
-            margin: 0;
-            max-width: 520px;
-        }
-
-        .bento-card-clean {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-subtle);
-            transition: all 0.25s ease;
-            margin-bottom: 2rem;
-        }
-        .bento-card-clean:hover {
-            border-color: var(--border-hover);
-        }
-
+        /* BENTO KPI CARDS */
         .kpi-minimal-card {
             background: var(--card);
             border: 1px solid var(--border);
@@ -585,10 +552,10 @@
 
         .sku-code {
             font-family: 'JetBrains Mono', monospace;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 0.82rem;
-            color: var(--txt);
-            letter-spacing: 0.02em;
+            color: var(--sku-txt);
+            letter-spacing: 0.04em;
         }
 
         .tag-pill {
@@ -596,7 +563,7 @@
             align-items: center;
             gap: 0.35rem;
             padding: 0.28rem 0.75rem;
-            border-radius: 9999px;
+            border-radius: var(--radius-sm);
             font-size: 0.75rem;
             font-weight: 600;
             background: var(--pill-bg);
@@ -604,7 +571,7 @@
             border: 1px solid var(--border);
         }
 
-        .badge-status-approved {
+        .badge-status-dispatched {
             display: inline-flex;
             align-items: center;
             gap: 0.35rem;
@@ -630,7 +597,7 @@
             border: 1px solid rgba(245, 158, 11, 0.25);
         }
 
-        .badge-status-reviewed {
+        .badge-status-declined {
             display: inline-flex;
             align-items: center;
             gap: 0.35rem;
@@ -638,142 +605,30 @@
             border-radius: 9999px;
             font-size: 0.75rem;
             font-weight: 700;
-            background: rgba(14, 165, 233, 0.1);
-            color: #0ea5e9;
-            border: 1px solid rgba(14, 165, 233, 0.25);
+            background: rgba(225, 29, 72, 0.1);
+            color: var(--brand-red);
+            border: 1px solid rgba(225, 29, 72, 0.25);
         }
 
-        .btn-action-view, .btn-action-txt, .btn-action-pdf, .btn-action-delete {
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
+        .btn-action-del {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: rgba(225, 29, 72, 0.08);
+            border: 1px solid rgba(225, 29, 72, 0.2);
+            color: var(--brand-red);
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            font-size: 0.88rem;
             cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-            text-decoration: none;
-            font-size: 0.95rem;
-            position: relative;
+            transition: all 0.2s ease;
         }
-
-        /* 1. View button (Indigo/Blue) */
-        .btn-action-view {
-            background: rgba(59, 130, 246, 0.1);
-            color: #2563eb;
-            border: 1px solid rgba(59, 130, 246, 0.22);
-        }
-        .btn-action-view:hover {
-            background: #2563eb;
+        .btn-action-del:hover {
+            background: var(--brand-red);
+            border-color: var(--brand-red);
             color: #ffffff;
-            border-color: #2563eb;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-        }
-
-        /* 2. Download TXT button (Emerald/Green) */
-        .btn-action-txt {
-            background: rgba(16, 185, 129, 0.1);
-            color: #059669;
-            border: 1px solid rgba(16, 185, 129, 0.22);
-        }
-        .btn-action-txt:hover {
-            background: #059669;
-            color: #ffffff;
-            border-color: #059669;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
-        }
-
-        /* 3. Download PDF button (Crimson/Red) */
-        .btn-action-pdf {
-            background: rgba(225, 29, 72, 0.1);
-            color: #e11d48;
-            border: 1px solid rgba(225, 29, 72, 0.22);
-        }
-        .btn-action-pdf:hover {
-            background: #e11d48;
-            color: #ffffff;
-            border-color: #e11d48;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(225, 29, 72, 0.3);
-        }
-
-        /* 4. Delete button (Slate to Danger) */
-        .btn-action-delete {
-            background: rgba(100, 116, 139, 0.08);
-            color: #64748b;
-            border: 1px solid rgba(100, 116, 139, 0.2);
-        }
-        .btn-action-delete:hover {
-            background: #dc2626;
-            color: #ffffff;
-            border-color: #dc2626;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
-        }
-
-        /* Dark mode overrides for high contrast and vibrant feel */
-        [data-theme="dark"] .btn-action-view {
-            background: rgba(59, 130, 246, 0.16);
-            color: #60a5fa;
-            border-color: rgba(59, 130, 246, 0.32);
-        }
-        [data-theme="dark"] .btn-action-view:hover {
-            background: #3b82f6;
-            color: #ffffff;
-            border-color: #3b82f6;
-        }
-
-        [data-theme="dark"] .btn-action-txt {
-            background: rgba(16, 185, 129, 0.16);
-            color: #34d399;
-            border-color: rgba(16, 185, 129, 0.32);
-        }
-        [data-theme="dark"] .btn-action-txt:hover {
-            background: #10b981;
-            color: #ffffff;
-            border-color: #10b981;
-        }
-
-        [data-theme="dark"] .btn-action-pdf {
-            background: rgba(225, 29, 72, 0.16);
-            color: #fb7185;
-            border-color: rgba(225, 29, 72, 0.32);
-        }
-        [data-theme="dark"] .btn-action-pdf:hover {
-            background: #f43f5e;
-            color: #ffffff;
-            border-color: #f43f5e;
-        }
-
-        [data-theme="dark"] .btn-action-delete {
-            background: rgba(148, 163, 184, 0.1);
-            color: #94a3b8;
-            border-color: rgba(148, 163, 184, 0.22);
-        }
-        [data-theme="dark"] .btn-action-delete:hover {
-            background: #ef4444;
-            color: #ffffff;
-            border-color: #ef4444;
-        }
-
-        /* REPORT BOX (CLEAN WHITE WITH MONOSPACE TEXT) */
-        .report-box {
-            background-color: #ffffff !important;
-            color: #111827 !important;
-            border: 1px solid #d1d5db !important;
-            border-radius: 14px;
-            padding: 1.75rem;
-            font-family: 'JetBrains Mono', Consolas, 'Courier New', monospace;
-            font-size: 0.85rem;
-            line-height: 1.65;
-            white-space: pre-wrap;
-            word-break: break-word;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
-            max-height: 600px;
-            overflow-y: auto;
-            margin: 0;
+            transform: scale(1.08);
         }
 
         /* FORM CONTROLS */
@@ -844,48 +699,42 @@
 
     <!-- 1. SIDEBAR RAIL -->
     <aside class="sidebar-rail">
-        <!-- Upper Account Details Changes -->
-        <a href="javascript:void(0)" onclick="openAccountModal()" class="brand-logo-icon" title="My Account & Profile Details">
+        <a href="javascript:void(0)" onclick="openAccountModal()" class="brand-logo-icon" title="My Account Profile">
             <i class="bi bi-person-circle"></i>
         </a>
 
-        <!-- 4 Depot Interfaces Navigation -->
         <ul class="sidebar-nav">
-            <!-- 1. Depot Dashboard -->
+            <!-- 1. Supply Procurement & Orders (Active) -->
             <li>
-                <a href="/inventory/dashboard" class="sidebar-icon-link" title="Depot Dashboard">
+                <a href="/spareparts" class="sidebar-icon-link active" title="Supply Procurement &amp; Orders">
                     <i class="bi bi-speedometer2"></i>
-                </a>
-            </li>
-            <!-- 2. Stock Repository -->
-            <li>
-                <a href="/inventory" class="sidebar-icon-link" title="Stock Repository">
-                    <i class="bi bi-layers-fill"></i>
-                </a>
-            </li>
-            <!-- 3. Reorder Alerts -->
-            <li>
-                <a href="/reorder" class="sidebar-icon-link" title="Reorder Center">
-                    <i class="bi bi-bell-fill"></i>
-                    <c:if test="${lowStockCount > 0}">
+                    <c:if test="${pendingRestockCount > 0}">
                         <span class="badge-dot"></span>
                     </c:if>
                 </a>
             </li>
-            <!-- 4. Reports & Audits (Active) -->
+            <!-- 2. Quality Control & Inspection Board -->
             <li>
-                <a href="/inventory/reports" class="sidebar-icon-link active" title="Reports & Audits">
-                    <i class="bi bi-file-earmark-bar-graph-fill"></i>
+                <a href="/procurement" class="sidebar-icon-link" title="Quality Inspection Board">
+                    <i class="bi bi-patch-check"></i>
+                    <c:if test="${pendingCount > 0}">
+                        <span class="badge-dot" style="background:#f59e0b;"></span>
+                    </c:if>
+                </a>
+            </li>
+            <!-- 3. Authorized OEM Suppliers Directory -->
+            <li>
+                <a href="/spareparts/suppliers" class="sidebar-icon-link" title="Authorized OEM Suppliers Directory">
+                    <i class="bi bi-buildings"></i>
                 </a>
             </li>
         </ul>
 
-        <!-- Lower Controls: Theme Toggle & Logout -->
         <div class="sidebar-bottom">
             <button class="theme-toggle-sidebar" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
-                <i class="bi bi-moon-stars-fill" id="themeSideIcon"></i>
+                <i id="themeSideIcon" class="bi bi-moon-stars-fill"></i>
             </button>
-            <a href="/logout" class="logout-icon-link" title="Sign Out">
+            <a href="/logout" class="logout-icon-link" title="Logout">
                 <i class="bi bi-box-arrow-right"></i>
             </a>
         </div>
@@ -897,20 +746,23 @@
         <!-- Topbar -->
         <header class="topbar-clean">
             <div>
-                <h1 class="topbar-title">EXECUTIVE AUDIT &amp; TELEMETRY</h1>
-                <p class="topbar-sub">CERTIFIED INVENTORY VALUATION &amp; ADMINISTRATIVE REPORTING</p>
+                <h1 class="topbar-title">SUPPLY PROCUREMENT &amp; ORDERS</h1>
+                <p class="topbar-sub">INVENTORY REORDER PIPELINE &amp; AUTHORIZED VENDOR SOURCING</p>
             </div>
 
             <div class="d-flex align-items-center gap-3">
                 <button type="button" class="btn-pill-outline" onclick="openAccountModal()" title="Account Profile">
                     <i class="bi bi-person-circle"></i>
-                    <span>${not empty sessionScope.fullName ? sessionScope.fullName : sessionScope.currentUser}</span>
+                    <span>${not empty sessionScope.fullName ? sessionScope.fullName : 'Spare Part Manager'}</span>
                 </button>
                 <button type="button" class="btn-pill-outline" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
                     <i id="themeIcon" class="bi bi-moon-stars-fill"></i>
                 </button>
-                <a href="/inventory/dashboard" class="btn-pill-dark">
-                    <i class="bi bi-speedometer2"></i> Dashboard
+                <button type="button" class="btn-pill-red" onclick="openAddNewSparePartModal()">
+                    <i class="bi bi-plus-circle-fill"></i> Add New Spare Part
+                </button>
+                <a href="/procurement" class="btn-pill-dark">
+                    <i class="bi bi-patch-check"></i> Quality Board
                 </a>
             </div>
         </header>
@@ -933,61 +785,64 @@
 
         <!-- Hero Banner -->
         <section class="hero-ev">
-            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1600&q=80" alt="Telemetry Cockpit" class="hero-ev-bg">
+            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&q=80" alt="Supply Chain Logistics" class="hero-ev-bg">
             <div class="hero-ev-overlay"></div>
             
             <div class="hero-ev-content">
                 <div class="hero-metrics-strip">
                     <div class="hero-metric-item">
-                        <span class="hero-metric-num">${totalItems}</span>
-                        <span class="hero-metric-lbl">Catalog SKUs</span>
+                        <span class="hero-metric-num">${pendingRestockCount}</span>
+                        <span class="hero-metric-lbl">Inventory Demands</span>
                     </div>
                     <div class="hero-metric-item">
-                        <span class="hero-metric-num">${totalStock}</span>
-                        <span class="hero-metric-lbl">Depot Units</span>
+                        <span class="hero-metric-num">${sentOrders.size()}</span>
+                        <span class="hero-metric-lbl">Active Orders</span>
                     </div>
                     <div class="hero-metric-item">
-                        <span class="hero-metric-num">Rs. <fmt:formatNumber value="${totalValuation}" pattern="#,##0"/></span>
-                        <span class="hero-metric-lbl">Asset Worth</span>
+                        <span class="hero-metric-num">${suppliers.size()}</span>
+                        <span class="hero-metric-lbl">OEM Suppliers</span>
                     </div>
                     <div class="hero-metric-item">
-                        <span class="hero-metric-num">${submittedReports != null ? submittedReports.size() : 0}</span>
-                        <span class="hero-metric-lbl">Dispatched</span>
+                        <span class="hero-metric-num">${pendingCount}</span>
+                        <span class="hero-metric-lbl">Awaiting QA</span>
                     </div>
                 </div>
 
-                <h2 class="hero-ev-title">INVENTORY AUDIT INTELLIGENCE</h2>
+                <h2 class="hero-ev-title">INVENTORY REORDER &amp; VENDOR SOURCING</h2>
                 <p class="hero-ev-sub">
-                    Compile real-time inventory valuations, track depot capacity thresholds, and transmit certified compliance documentation directly to executive administrators.
+                    Add new spare parts to the system and send requisition requests to OEM suppliers. Fulfill warehouse restock demands with automated vendor orders.
                 </p>
 
                 <div class="d-flex align-items-center gap-3 flex-wrap">
-                    <a href="#reportGeneratorSection" class="btn-pill-white">
-                        <i class="bi bi-file-earmark-play-fill"></i> Generate Audit
+                    <button type="button" class="btn-pill-white" onclick="openAddNewSparePartModal()">
+                        <i class="bi bi-plus-circle-fill text-danger"></i> Add New Spare Part &amp; Send Req to Supplier
+                    </button>
+                    <a href="#incomingRequestsSection" class="btn-pill-ghost">
+                        <i class="bi bi-inbox-fill"></i> View Demands (${pendingRestockCount})
                     </a>
-                    <a href="/inventory" class="btn-pill-ghost">
-                        <i class="bi bi-table"></i> Repository
+                    <a href="/spareparts/suppliers" class="btn-pill-ghost">
+                        <i class="bi bi-buildings"></i> Suppliers Network (${suppliers.size()})
                     </a>
-                    <a href="/reorder" class="btn-pill-ghost">
-                        <i class="bi bi-bell"></i> Reorder Queue
+                    <a href="/procurement" class="btn-pill-ghost">
+                        <i class="bi bi-patch-check"></i> Quality Board (${pendingCount})
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- 4 KPI Metrics Row -->
+        <!-- 4 Bento KPI Cards -->
         <div class="row g-3 mb-4">
             <div class="col-sm-6 col-xl-3">
-                <div class="kpi-minimal-card">
+                <div class="kpi-minimal-card" style="border-color:${pendingRestockCount > 0 ? 'var(--brand-red)' : 'var(--border)'};">
                     <div class="kpi-metric-header">
-                        <span class="kpi-tag">CATALOG MODELS</span>
-                        <div class="kpi-icon-pill">
-                            <i class="bi bi-boxes"></i>
+                        <span class="kpi-tag" style="color:${pendingRestockCount > 0 ? 'var(--brand-red)' : 'var(--txt-muted)'};">INVENTORY DEMAND</span>
+                        <div class="kpi-icon-pill" style="color:${pendingRestockCount > 0 ? 'var(--brand-red)' : 'inherit'};">
+                            <i class="bi bi-inbox-fill"></i>
                         </div>
                     </div>
                     <div>
-                        <div class="kpi-val">${totalItems}</div>
-                        <p class="kpi-subnote">Active registered part SKUs</p>
+                        <div class="kpi-val" style="color:${pendingRestockCount > 0 ? 'var(--brand-red)' : 'var(--txt)'};">${pendingRestockCount}</div>
+                        <p class="kpi-subnote">${pendingRestockCount > 0 ? 'Requests needing supplier orders' : 'All warehouse stock adequate'}</p>
                     </div>
                 </div>
             </div>
@@ -995,14 +850,14 @@
             <div class="col-sm-6 col-xl-3">
                 <div class="kpi-minimal-card">
                     <div class="kpi-metric-header">
-                        <span class="kpi-tag">DEPOT STORAGE</span>
+                        <span class="kpi-tag">PURCHASE ORDERS</span>
                         <div class="kpi-icon-pill">
-                            <i class="bi bi-layers-fill"></i>
+                            <i class="bi bi-send-check"></i>
                         </div>
                     </div>
                     <div>
-                        <div class="kpi-val">${totalStock}</div>
-                        <p class="kpi-subnote">Units of ${maxCapacity} Max (${capacityPct}%)</p>
+                        <div class="kpi-val">${sentOrders.size()}</div>
+                        <p class="kpi-subnote">Total purchase orders placed with vendors</p>
                     </div>
                 </div>
             </div>
@@ -1010,153 +865,120 @@
             <div class="col-sm-6 col-xl-3">
                 <div class="kpi-minimal-card">
                     <div class="kpi-metric-header">
-                        <span class="kpi-tag">VALUATION</span>
+                        <span class="kpi-tag">OEM SUPPLIERS</span>
                         <div class="kpi-icon-pill">
-                            <i class="bi bi-cash-stack"></i>
+                            <i class="bi bi-buildings"></i>
                         </div>
                     </div>
                     <div>
-                        <div class="kpi-val text-success">Rs. <fmt:formatNumber value="${totalValuation}" pattern="#,##0"/></div>
-                        <p class="kpi-subnote">Certified inventory asset worth</p>
+                        <div class="kpi-val">${suppliers.size()}</div>
+                        <p class="kpi-subnote">Certified vendor partner accounts</p>
                     </div>
                 </div>
             </div>
 
             <div class="col-sm-6 col-xl-3">
-                <div class="kpi-minimal-card" style="border-color:${lowStockCount > 0 ? 'var(--brand-red)' : 'var(--border)'};">
+                <div class="kpi-minimal-card">
                     <div class="kpi-metric-header">
-                        <span class="kpi-tag" style="color:${lowStockCount > 0 ? 'var(--brand-red)' : 'var(--txt-muted)'};">SAFETY STATUS</span>
-                        <div class="kpi-icon-pill" style="color:${lowStockCount > 0 ? 'var(--brand-red)' : 'inherit'};">
-                            <i class="bi ${lowStockCount > 0 ? 'bi-exclamation-diamond' : 'bi-shield-check'}"></i>
+                        <span class="kpi-tag">AWAITING FULFILLMENT</span>
+                        <div class="kpi-icon-pill">
+                            <i class="bi bi-hourglass-split"></i>
                         </div>
                     </div>
                     <div>
-                        <div class="kpi-val" style="color:${lowStockCount > 0 ? 'var(--brand-red)' : 'var(--txt)'};">${lowStockCount}</div>
-                        <p class="kpi-subnote">${lowStockCount > 0 ? 'Items below reorder threshold' : 'All stock levels optimal'}</p>
+                        <div class="kpi-val">${pendingSupplierOrdersCount}</div>
+                        <p class="kpi-subnote">Orders pending supplier dispatch</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- REPORT GENERATOR CARD -->
-        <section id="reportGeneratorSection" class="table-card mb-4">
+        <!-- TABLE 1: INCOMING RESTOCK REQUESTS FROM INVENTORY -->
+        <section id="incomingRequestsSection" class="table-card">
             <div class="table-card-header">
                 <div>
                     <h3 class="table-card-title">
-                        <i class="bi bi-file-earmark-code"></i> REPORT GENERATION ENGINE
+                        <i class="bi bi-inbox-fill"></i> INCOMING RESTOCK REQUESTS FROM INVENTORY
                     </h3>
-                    <p class="table-card-sub">Select date range and template to compile telemetry and certified warehouse audits.</p>
+                    <p class="table-card-sub">Replenishment requests transmitted from the warehouse for parts below safety stock levels.</p>
                 </div>
-                <span class="tag-pill"><i class="bi bi-database-check me-1"></i>Live SQL Data Engine</span>
+                <c:choose>
+                    <c:when test="${pendingRestockCount > 0}">
+                        <span class="tag-pill" style="border-color:var(--brand-red); color:var(--brand-red);">
+                            <i class="bi bi-exclamation-circle-fill"></i> ${pendingRestockCount} Pending Demand
+                        </span>
+                    </c:when>
+                    <c:otherwise>
+                        <span class="tag-pill">
+                            <i class="bi bi-check-circle-fill text-success"></i> All Inventory Supplied
+                        </span>
+                    </c:otherwise>
+                </c:choose>
             </div>
 
-            <div class="p-4">
-                <form action="/inventory/reports/generate" method="post">
-                    <div class="row g-3">
-                        <div class="col-md-5">
-                            <label class="form-label-clean">Report Category &amp; Template</label>
-                            <select name="reportType" class="form-select-clean" required>
-                                <option value="Warehouse Inventory Valuation & Stock Summary" ${reportType == 'Warehouse Inventory Valuation & Stock Summary' ? 'selected' : ''}>
-                                    Warehouse Inventory Valuation &amp; Stock Summary
-                                </option>
-                                <option value="Low Stock & Safety Threshold Audit" ${reportType == 'Low Stock & Safety Threshold Audit' ? 'selected' : ''}>
-                                    Low Stock &amp; Safety Threshold Audit
-                                </option>
-                                <option value="Depot Storage Capacity & Rack Utilization" ${reportType == 'Depot Storage Capacity & Rack Utilization' ? 'selected' : ''}>
-                                    Depot Storage Capacity &amp; Rack Utilization
-                                </option>
-                                <option value="QC Inbound Shipments & Quality Analysis" ${reportType == 'QC Inbound Shipments & Quality Analysis' ? 'selected' : ''}>
-                                    QC Inbound Shipments &amp; Quality Analysis
-                                </option>
-                            </select>
-                        </div>
-                        <div class="col-md-3">
-                            <label class="form-label-clean">Period From</label>
-                            <input type="date" name="fromDate" value="${fromDate}" class="form-control-clean">
-                        </div>
-                        <div class="col-md-3">
-                            <label class="form-label-clean">Period To</label>
-                            <input type="date" name="toDate" value="${toDate}" class="form-control-clean">
-                        </div>
-                        <div class="col-md-1 d-flex align-items-end">
-                            <button type="submit" class="btn-pill-dark w-100 justify-content-center" title="Generate Preview">
-                                <i class="bi bi-play-fill"></i> Run
-                            </button>
-                        </div>
-                        <div class="col-12">
-                            <label class="form-label-clean">Manager Remarks / Summary Notes for Admin</label>
-                            <input type="text" name="notes" value="${notes}" class="form-control-clean" placeholder="e.g. Monthly inventory reconciliation completed. Low stock items flagged for restock.">
-                        </div>
-                    </div>
-                </form>
+            <div class="table-responsive">
+                <table class="table-minimal">
+                    <thead>
+                        <tr>
+                            <th style="width:90px;">Req ID</th>
+                            <th style="width:130px;">Part SKU</th>
+                            <th>Part Description</th>
+                            <th class="text-center" style="width:120px;">Current Stock</th>
+                            <th class="text-center" style="width:120px;">Needed Units</th>
+                            <th>Inventory Remarks</th>
+                            <th style="width:130px;">Request Date</th>
+                            <th class="text-center" style="width:180px;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:choose>
+                            <c:when test="${empty incomingRequests}">
+                                <tr>
+                                    <td colspan="8" class="text-center py-5" style="color:var(--txt2);">
+                                        <i class="bi bi-check-circle-fill text-success fs-1 d-block mb-2"></i>
+                                        <h6 class="fw-bold" style="color:var(--txt);">No Pending Restock Requests</h6>
+                                        <small style="color:var(--txt2);">Warehouse stock levels are currently balanced and healthy.</small>
+                                    </td>
+                                </tr>
+                            </c:when>
+                            <c:otherwise>
+                                <c:forEach var="req" items="${incomingRequests}">
+                                    <tr>
+                                        <td><span class="tag-pill">#${req.requestId}</span></td>
+                                        <td><span class="sku-code">${req.partId}</span></td>
+                                        <td><div class="fw-bold" style="color:var(--txt);">${req.partName}</div></td>
+                                        <td class="text-center small" style="color:var(--txt2);">${req.currentQuantity} Units</td>
+                                        <td class="text-center">
+                                            <span class="tag-pill" style="font-weight:700; color:var(--txt);">${req.requestedQuantity} Units</span>
+                                        </td>
+                                        <td class="small" style="color:var(--txt2);">${req.requestMessage}</td>
+                                        <td><small class="sku-code" style="color:var(--txt2);">${req.requestDate}</small></td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn-pill-red"
+                                                    onclick="openRequestSupplierModal('${req.requestId}', '${req.partId}', '${req.partName}', ${req.requestedQuantity})">
+                                                <i class="bi bi-truck"></i> Order from Supplier
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </c:otherwise>
+                        </c:choose>
+                    </tbody>
+                </table>
             </div>
         </section>
 
-        <!-- LIVE AUDIT PREVIEW (WHEN REPORT IS GENERATED) -->
-        <c:if test="${not empty generatedReport}">
-            <section class="table-card mb-4" style="border-color:var(--brand-dark);">
-                <div class="table-card-header">
-                    <div>
-                        <div class="d-flex align-items-center gap-2 mb-1">
-                            <span class="tag-pill" style="font-weight:700;"><i class="bi bi-eye"></i> PREVIEW READY</span>
-                        </div>
-                        <h3 class="table-card-title">${reportType}</h3>
-                        <p class="table-card-sub">Review compiled audit telemetry before dispatching to Executive Administration.</p>
-                    </div>
-
-                    <div class="d-flex align-items-center gap-2 flex-wrap">
-                        <!-- 1. Download TXT -->
-                        <form action="/inventory/reports/download-content-txt" method="post" style="margin:0;">
-                            <input type="hidden" name="reportTitle" value="${not empty reportTitle ? reportTitle : reportType}">
-                            <textarea name="reportContent" style="display:none;"><c:out value="${generatedReport}"/></textarea>
-                            <button type="submit" class="btn-pill-outline" style="padding:0.45rem 1rem; font-size:0.78rem;" title="Download plain text file (.txt)">
-                                <i class="bi bi-file-earmark-text"></i> Download TXT
-                            </button>
-                        </form>
-
-                        <!-- 2. Download PDF -->
-                        <form action="/inventory/reports/download-content" method="post" style="margin:0;">
-                            <input type="hidden" name="reportTitle" value="${not empty reportTitle ? reportTitle : reportType}">
-                            <input type="hidden" name="reportType" value="${reportType}">
-                            <input type="hidden" name="notes" value="${notes}">
-                            <textarea name="reportContent" style="display:none;"><c:out value="${generatedReport}"/></textarea>
-                            <button type="submit" class="btn-pill-outline" style="padding:0.45rem 1rem; font-size:0.78rem;" title="Download Official PDF document">
-                                <i class="bi bi-file-earmark-pdf"></i> Download PDF
-                            </button>
-                        </form>
-
-                        <!-- 3. Dispatch to Executive Admin -->
-                        <form action="/inventory/reports/dispatch-admin" method="post" style="margin:0;">
-                            <input type="hidden" name="reportTitle" value="${not empty reportTitle ? reportTitle : (reportType.concat(' [Audit Report]'))}">
-                            <input type="hidden" name="reportType" value="${reportType}">
-                            <input type="hidden" name="fromDate" value="${fromDate}">
-                            <input type="hidden" name="toDate" value="${toDate}">
-                            <input type="hidden" name="notes" value="${notes}">
-                            <textarea name="reportContent" style="display:none;"><c:out value="${generatedReport}"/></textarea>
-                            <button type="submit" class="btn-pill-red" style="padding:0.45rem 1.15rem; font-size:0.78rem;">
-                                <i class="bi bi-send-check"></i> Dispatch to Executive Admin
-                            </button>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="p-4">
-                    <pre class="report-box">${generatedReport}</pre>
-                </div>
-            </section>
-        </c:if>
-
-        <!-- SUBMITTED COMPLIANCE AUDITS TABLE -->
+        <!-- TABLE 2: ORDERS SENT TO SUPPLIERS -->
         <section class="table-card">
             <div class="table-card-header">
                 <div>
                     <h3 class="table-card-title">
-                        <i class="bi bi-clock-history"></i> TRANSMITTED COMPLIANCE AUDITS
+                        <i class="bi bi-truck-flatbed"></i> SUPPLIER PROCUREMENT PIPELINE
                     </h3>
-                    <p class="table-card-sub">Audit reports submitted to Executive Administration and their review status.</p>
+                    <p class="table-card-sub">Active purchase orders issued to authorized suppliers and their fulfillment status.</p>
                 </div>
                 <span class="tag-pill">
-                    Dispatched: <strong>${submittedReports != null ? submittedReports.size() : 0}</strong>
+                    Pipeline: <strong>${sentOrders.size()}</strong> Orders
                 </span>
             </div>
 
@@ -1164,85 +986,73 @@
                 <table class="table-minimal">
                     <thead>
                         <tr>
-                            <th style="width:90px;">Ref #</th>
-                            <th>Report Title</th>
-                            <th>Category</th>
-                            <th>Generated Date</th>
-                            <th>Dispatcher</th>
-                            <th class="text-center">Admin Status</th>
-                            <th class="text-center" style="width:160px;">Actions</th>
+                            <th style="width:100px;">PO #</th>
+                            <th>Target Supplier</th>
+                            <th style="width:120px;">Part SKU</th>
+                            <th>Part Description</th>
+                            <th class="text-center" style="width:110px;">Order Qty</th>
+                            <th class="text-end" style="width:130px;">Target Price</th>
+                            <th style="width:120px;">Order Date</th>
+                            <th class="text-center" style="width:180px;">Pipeline Status</th>
+                            <th class="text-center" style="width:90px;">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <c:choose>
-                            <c:when test="${empty submittedReports}">
+                            <c:when test="${empty sentOrders}">
                                 <tr>
-                                    <td colspan="7" class="text-center py-5" style="color:var(--txt2);">
-                                        <i class="bi bi-file-earmark-text fs-1 d-block mb-2" style="color:var(--txt-muted);"></i>
-                                        <h6 class="fw-bold" style="color:var(--txt);">No Reports Dispatched Yet</h6>
-                                        <small style="color:var(--txt2);">Generate an audit report above and click "Dispatch to Executive Admin" to begin.</small>
+                                    <td colspan="9" class="text-center py-5" style="color:var(--txt2);">
+                                        <i class="bi bi-send-x fs-1 d-block mb-2" style="color:var(--txt-muted);"></i>
+                                        <h6 class="fw-bold" style="color:var(--txt);">No Purchase Orders in Pipeline</h6>
+                                        <small style="color:var(--txt2);">Use the "Order from Supplier" button above to transmit orders to vendors.</small>
                                     </td>
                                 </tr>
                             </c:when>
                             <c:otherwise>
-                                <c:forEach var="rep" items="${submittedReports}">
+                                <c:forEach var="so" items="${sentOrders}">
                                     <tr>
-                                        <td><span class="tag-pill">#${rep.reportId}</span></td>
+                                        <td><span class="tag-pill">#PO-${so.orderId}</span></td>
                                         <td>
-                                            <div class="fw-bold" style="color:var(--txt);">${rep.reportTitle}</div>
-                                            <c:if test="${not empty rep.notes}">
-                                                <small style="color:var(--txt2);"><i class="bi bi-chat-left-text me-1"></i>${rep.notes}</small>
-                                            </c:if>
+                                            <div class="fw-bold" style="color:var(--txt);">
+                                                <i class="bi bi-building me-1" style="color:var(--txt-muted);"></i>${so.supplierName}
+                                            </div>
                                         </td>
-                                        <td><span class="tag-pill">${rep.reportType}</span></td>
-                                        <td><small class="sku-code" style="color:var(--txt2);">${rep.generatedDate}</small></td>
-                                        <td><span class="small fw-semibold" style="color:var(--txt);">${rep.generatedBy}</span></td>
+                                        <td><span class="sku-code">${so.partId}</span></td>
+                                        <td><div class="fw-bold" style="color:var(--txt);">${so.partName}</div></td>
+                                        <td class="text-center fw-bold" style="color:var(--txt);">${so.requestedQty} Units</td>
+                                        <td class="text-end sku-code">
+                                            Rs. <fmt:formatNumber value="${so.expectedPrice}" pattern="#,##0.00"/>
+                                        </td>
+                                        <td><small class="sku-code" style="color:var(--txt2);">${so.orderDate}</small></td>
                                         <td class="text-center">
                                             <c:choose>
-                                                <c:when test="${rep.status == 'Approved'}">
-                                                    <span class="badge-status-approved">
-                                                        <i class="bi bi-check-circle-fill"></i> Approved
-                                                    </span>
+                                                <c:when test="${so.dispatched}">
+                                                    <a href="/procurement" class="badge-status-dispatched text-decoration-none" title="Batch dispatched by supplier. Click to inspect on Quality Board.">
+                                                        <i class="bi bi-truck"></i> DISPATCHED (In QA)
+                                                    </a>
                                                 </c:when>
-                                                <c:when test="${rep.status == 'Reviewed' || rep.status == 'Reviewed & Analyzed'}">
-                                                    <span class="badge-status-reviewed">
-                                                        <i class="bi bi-eye-fill"></i> Reviewed
+                                                <c:when test="${so.rejected}">
+                                                    <span class="badge-status-declined">
+                                                        <i class="bi bi-x-circle"></i> DECLINED
                                                     </span>
                                                 </c:when>
                                                 <c:otherwise>
                                                     <span class="badge-status-pending">
-                                                        <i class="bi bi-hourglass-split"></i> Pending
+                                                        <i class="bi bi-hourglass-split"></i> AWAITING SUPPLIER
                                                     </span>
                                                 </c:otherwise>
                                             </c:choose>
                                         </td>
                                         <td class="text-center">
-                                            <div class="d-inline-flex gap-2 align-items-center">
-                                                <button class="btn-action-view"
-                                                        onclick="viewModalReport('${rep.reportId}', '${rep.reportTitle}', '${rep.status}')"
-                                                        title="View Report Content">
-                                                    <i class="bi bi-eye-fill"></i>
+                                            <form action="/procurement/order/delete" method="post" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete purchase order #PO-${so.orderId} for ${so.partName}?');">
+                                                <input type="hidden" name="orderId" value="${so.orderId}">
+                                                <input type="hidden" name="redirectUrl" value="/spareparts">
+                                                <button type="submit" class="btn-action-del" title="Delete Purchase Order #PO-${so.orderId}">
+                                                    <i class="bi bi-trash3-fill"></i>
                                                 </button>
-                                                <a href="/inventory/reports/download-txt/${rep.reportId}"
-                                                   class="btn-action-txt"
-                                                   title="Download Plain Text (.txt)">
-                                                    <i class="bi bi-file-earmark-text-fill"></i>
-                                                </a>
-                                                <a href="/inventory/reports/download/${rep.reportId}"
-                                                   class="btn-action-pdf"
-                                                   title="Download Official PDF Report">
-                                                    <i class="bi bi-file-earmark-pdf-fill"></i>
-                                                </a>
-                                                <form action="/inventory/reports/delete" method="post" style="margin:0;" onsubmit="return confirm('Are you sure you want to delete this report?');">
-                                                    <input type="hidden" name="reportId" value="${rep.reportId}">
-                                                    <button type="submit" class="btn-action-delete" title="Delete Report">
-                                                        <i class="bi bi-trash3-fill"></i>
-                                                    </button>
-                                                </form>
-                                            </div>
+                                            </form>
                                         </td>
                                     </tr>
-                                    <div id="report-content-${rep.reportId}" style="display:none;"><c:out value="${rep.reportContent}"/></div>
                                 </c:forEach>
                             </c:otherwise>
                         </c:choose>
@@ -1253,35 +1063,159 @@
 
     </main>
 
-    <!-- View Report Modal -->
-    <div class="modal fade" id="viewReportModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div>
-                        <h6 class="modal-title mb-0" id="viewModalTitle">Report Content</h6>
-                        <small style="color:var(--txt-muted);" id="viewModalRef"></small>
+    <!-- Modal 0: Add New Spare Part to System & Send Supplier Request -->
+    <div class="modal fade" id="addNewSparePartModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 820px;">
+            <div class="modal-content" style="border-radius: 4px; border: 1px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.3);">
+                <form action="/procurement/request-new-part" method="post">
+                    <input type="hidden" name="redirectUrl" value="/spareparts">
+                    <div class="modal-header" style="border-radius: 4px 4px 0 0; padding: 1.4rem 2rem; border-bottom: 1px solid var(--border); background: var(--card);">
+                        <div class="d-flex align-items-center gap-3">
+                            <div style="width:42px;height:42px;border-radius:4px;background:var(--brand-red);color:#090a0d;display:flex;align-items:center;justify-content:center;font-size:1.25rem;">
+                                <i class="bi bi-plus-square-fill"></i>
+                            </div>
+                            <div>
+                                <h5 class="modal-title mb-0" style="font-size: 1.15rem; font-weight: 800; letter-spacing: -0.01em; text-transform: uppercase;">Add New Spare Part to System</h5>
+                                <small style="color:var(--txt-muted); font-size: 0.8rem;">Register new spare part SKU &amp; send requisition to OEM supplier</small>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" style="filter: var(--btn-close-filter, none);"></button>
                     </div>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <pre class="report-box mb-0" id="viewModalBody"></pre>
-                </div>
-                <div class="modal-footer">
-                    <span class="badge-status-approved" id="viewModalStatus"></span>
-                    <a id="viewModalDownloadTxtBtn" href="#" class="btn-pill-outline ms-auto" style="padding:0.45rem 1rem; font-size:0.8rem;" title="Download plain text file">
-                        <i class="bi bi-file-earmark-text"></i> Download TXT
-                    </a>
-                    <a id="viewModalDownloadBtn" href="#" class="btn-pill-dark" style="padding:0.45rem 1rem; font-size:0.8rem;">
-                        <i class="bi bi-file-earmark-pdf"></i> Download PDF
-                    </a>
-                    <button type="button" class="btn-pill-outline" style="padding:0.45rem 1rem; font-size:0.8rem;" data-bs-dismiss="modal">Close</button>
-                </div>
+
+                    <div class="modal-body" style="padding: 2rem;">
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-7">
+                                <label class="form-label-clean" style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em;">Spare Part SKU / Code *</label>
+                                <input type="text" name="partId" id="newPartId" class="form-control-clean sku-code" placeholder="e.g. SP-5040 or PRT-9100" style="border-radius:4px; height: 44px;" required>
+                            </div>
+                            <div class="col-md-5 d-flex align-items-end">
+                                <button type="button" class="btn-pill-outline w-100" onclick="generateNewPartSku()" title="Generate Random Part ID" style="border-radius:4px; height: 44px; font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.03em;">
+                                    <i class="bi bi-magic me-1"></i> Auto SKU
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label-clean" style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em;">Spare Part Name / Description *</label>
+                            <input type="text" name="partName" id="newPartName" class="form-control-clean" placeholder="e.g. Ceramic Front Brake Rotor 350mm" style="border-radius:4px; height: 44px;" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label-clean" style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em;">Select Authorized OEM Supplier *</label>
+                            <select name="supplierName" id="newPartSupplierSelect" class="form-select-clean" style="border-radius:4px; height: 44px;" required>
+                                <c:forEach var="sup" items="${suppliers}">
+                                    <option value="${sup.supplierName}">${sup.supplierName} &bull; ${sup.category}</option>
+                                </c:forEach>
+                                <c:if test="${empty suppliers}">
+                                    <option value="Apex Auto Components Ltd">Apex Auto Components Ltd &bull; Engine &amp; Transmission</option>
+                                    <option value="Brembo Brake Systems Global">Brembo Brake Systems Global &bull; Braking Systems</option>
+                                    <option value="Denso OEM Genuine Parts">Denso OEM Genuine Parts &bull; OEM Electrical</option>
+                                    <option value="Titan Heavy Wheels & Tyres">Titan Heavy Wheels & Tyres &bull; Wheels &amp; Suspension</option>
+                                </c:if>
+                            </select>
+                        </div>
+
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label-clean" style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em;">Initial Request Quantity *</label>
+                                <input type="number" name="requestedQty" id="newPartQty" class="form-control-clean" min="1" value="20" style="border-radius:4px; height: 44px;" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label-clean" style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em;">Target Unit Price (Rs.) *</label>
+                                <input type="number" step="0.01" name="expectedPrice" id="newPartPrice" class="form-control-clean sku-code" value="6500.00" style="border-radius:4px; height: 44px;" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-1">
+                            <label class="form-label-clean" style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em;">Requisition Notes &amp; Specifications for Supplier</label>
+                            <textarea name="deliveryNotes" class="form-control-clean" rows="3" placeholder="e.g. New part catalog introduction. OEM certified standard packaging required." style="border-radius:4px;"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer" style="border-radius: 0 0 4px 4px; padding: 1.25rem 2rem; border-top: 1px solid var(--border); background: var(--card);">
+                        <button type="button" class="btn-pill-outline" data-bs-dismiss="modal" style="border-radius:4px; padding: 0.65rem 1.4rem; font-weight: 600;">Cancel</button>
+                        <button type="submit" class="btn-pill-red" style="border-radius:4px; padding: 0.65rem 1.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em;">
+                            <i class="bi bi-send-check-fill me-1"></i> Register &amp; Send Req to Supplier
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 
-    <!-- My Account Modal -->
+    <!-- Modal 1: Send Purchase Request to Supplier -->
+    <div class="modal fade" id="requestSupplierModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form action="/procurement/request-supplier" method="post">
+                    <input type="hidden" name="restockRequestId" id="reqRestockReqId">
+                    <div class="modal-header">
+                        <div>
+                            <h6 class="modal-title mb-0">Order Parts from Supplier</h6>
+                            <small style="color:var(--txt-muted);">Transmits purchase order directly to the Supplier Portal</small>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body p-4">
+                        <div class="p-3 rounded-3 mb-3" style="background:var(--card-subtle); border:1px solid var(--border);">
+                            <div class="small" style="color:var(--txt-muted); font-weight:700; text-transform:uppercase; font-size:0.7rem;">Target Inventory Reference</div>
+                            <div class="fw-bold fs-6 mt-1" id="reqPartDisplay" style="color:var(--txt);"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label-clean">Authorized OEM Supplier *</label>
+                            <select name="supplierName" id="orderSupplierSelect" class="form-select-clean" required>
+                                <c:forEach var="sup" items="${suppliers}">
+                                    <option value="${sup.supplierName}">${sup.supplierName} &bull; ${sup.category}</option>
+                                </c:forEach>
+                                <c:if test="${empty suppliers}">
+                                    <option value="Apex Auto Components Ltd">Apex Auto Components Ltd &bull; Engine &amp; Transmission</option>
+                                    <option value="Brembo Brake Systems Global">Brembo Brake Systems Global &bull; Braking Systems</option>
+                                    <option value="Denso OEM Genuine Parts">Denso OEM Genuine Parts &bull; OEM Electrical</option>
+                                    <option value="Titan Heavy Wheels & Tyres">Titan Heavy Wheels & Tyres &bull; Wheels &amp; Suspension</option>
+                                </c:if>
+                            </select>
+                        </div>
+
+                        <div class="row g-2 mb-3">
+                            <div class="col-6">
+                                <label class="form-label-clean">Part SKU / Code *</label>
+                                <input type="text" name="partId" id="orderPartId" class="form-control-clean sku-code" readonly required>
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label-clean">Requested Quantity *</label>
+                                <input type="number" name="requestedQty" id="orderRequestedQty" class="form-control-clean" min="1" required>
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="partName" id="orderPartName">
+
+                        <div class="mb-3">
+                            <label class="form-label-clean">Target Unit Price (Rs.) *</label>
+                            <input type="number" step="0.01" name="expectedPrice" id="orderExpectedPrice" class="form-control-clean sku-code" value="5000.00" required>
+                        </div>
+
+                        <div class="mb-2">
+                            <label class="form-label-clean">Purchase Order Notes / Instructions</label>
+                            <textarea name="deliveryNotes" class="form-control-clean" rows="2" placeholder="e.g. Urgent warehouse restock. Ensure OEM standard batch packaging."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn-pill-outline" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn-pill-red">
+                            <i class="bi bi-send-fill"></i> Transmit Order to Supplier
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal 4: My Account Modal -->
     <div class="modal fade" id="accountModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered" style="max-width:440px;">
             <div class="modal-content">
@@ -1292,7 +1226,7 @@
                         </div>
                         <div>
                             <h6 class="modal-title mb-0">My Account Profile</h6>
-                            <small style="color:var(--txt-muted);">Inventory Manager credentials</small>
+                            <small style="color:var(--txt-muted);">Spare Part Manager credentials</small>
                         </div>
                     </div>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -1304,11 +1238,11 @@
                             <i class="bi bi-person-fill"></i>
                         </div>
                         <div class="fw-bold" style="color:var(--txt);">${not empty sessionScope.fullName ? sessionScope.fullName : sessionScope.currentUser}</div>
-                        <div class="small text-secondary">${sessionScope.currentUser} &middot; <span class="tag-pill">Inventory Manager</span></div>
+                        <div class="small text-secondary">${sessionScope.currentUser} &middot; <span class="tag-pill">Spare Part Manager</span></div>
                     </div>
 
                     <form action="/account/update-profile" method="post" id="profileUpdateForm" autocomplete="off">
-                        <input type="hidden" name="redirectUrl" value="/inventory/reports">
+                        <input type="hidden" name="redirectUrl" value="/spareparts">
 
                         <div class="mb-3">
                             <label class="form-label-clean">Full Name</label>
@@ -1320,7 +1254,7 @@
                         <div class="mb-3">
                             <label class="form-label-clean">Email Address</label>
                             <input type="email" name="email" class="form-control-clean"
-                                   value="${not empty sessionScope.email ? sessionScope.email : 'inventory@parttrack.com'}"
+                                   value="${not empty sessionScope.email ? sessionScope.email : 'spareparts@parttrack.com'}"
                                    placeholder="your@email.com" autocomplete="off">
                         </div>
 
@@ -1366,6 +1300,35 @@
             new bootstrap.Modal(document.getElementById('accountModal')).show();
         }
 
+        function openRequestSupplierModal(reqId, partId, partName, reqQty) {
+            document.getElementById('reqRestockReqId').value = reqId || '';
+            document.getElementById('orderPartId').value = partId;
+            document.getElementById('orderPartId').readOnly = true;
+            document.getElementById('orderPartName').value = partName;
+            document.getElementById('reqPartDisplay').textContent = partName + ' (' + partId + ')';
+            document.getElementById('orderRequestedQty').value = reqQty || 1;
+            new bootstrap.Modal(document.getElementById('requestSupplierModal')).show();
+        }
+
+        function openAddNewSparePartModal() {
+            generateNewPartSku();
+            document.getElementById('newPartName').value = '';
+            document.getElementById('newPartQty').value = '20';
+            document.getElementById('newPartPrice').value = '6500.00';
+            new bootstrap.Modal(document.getElementById('addNewSparePartModal')).show();
+        }
+
+        function generateNewPartSku() {
+            var randomNum = Math.floor(1000 + Math.random() * 9000);
+            document.getElementById('newPartId').value = 'PRT-' + randomNum;
+        }
+
+        function openNewPurchaseOrderModal() {
+            openAddNewSparePartModal();
+        }
+
+
+
         function togglePassVisibility(inputId, iconId) {
             var input = document.getElementById(inputId);
             var icon  = document.getElementById(iconId);
@@ -1395,27 +1358,6 @@
                 return false;
             }
             return true;
-        }
-
-        function viewModalReport(id, title, status) {
-            document.getElementById('viewModalTitle').textContent = title;
-            document.getElementById('viewModalRef').textContent = "Reference ID #" + id;
-            var statusEl = document.getElementById('viewModalStatus');
-            statusEl.textContent = status;
-            if (status === 'Approved') {
-                statusEl.className = 'badge-status-approved';
-            } else if (status.includes('Reviewed')) {
-                statusEl.className = 'badge-status-reviewed';
-            } else {
-                statusEl.className = 'badge-status-pending';
-            }
-            var contentEl = document.getElementById('report-content-' + id);
-            document.getElementById('viewModalBody').textContent = contentEl ? contentEl.textContent : "No content";
-            var dlBtn = document.getElementById('viewModalDownloadBtn');
-            if (dlBtn) dlBtn.href = '/inventory/reports/download/' + id;
-            var dlTxtBtn = document.getElementById('viewModalDownloadTxtBtn');
-            if (dlTxtBtn) dlTxtBtn.href = '/inventory/reports/download-txt/' + id;
-            new bootstrap.Modal(document.getElementById('viewReportModal')).show();
         }
 
         function toggleTheme() {
